@@ -3,8 +3,6 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { DarkModeContext } from "../contexts/DarkModeContext";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 export default function NavBar() {
     const { isAuthenticated, logout } = useContext(AuthContext);
@@ -39,9 +37,11 @@ export default function NavBar() {
                             </>
                         ) : null}
                         <li>
-                            <button onClick={toggleDarkMode} className={`${darkMode ? 'text-gray-200' : 'text-white'} hover:text-gray-300 transition-colors duration-300`}>
-                                <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
-                            </button>
+                            <button 
+                                onClick={toggleDarkMode} 
+                                className={`w-6 h-6 rounded-full border-2 ${darkMode ? 'bg-white border-gray-200' : 'bg-black border-white'} transition-colors duration-300`}
+                                aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+                            />
                         </li>
                     </ul>
                 </div>
